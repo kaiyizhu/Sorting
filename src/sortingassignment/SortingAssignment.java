@@ -51,5 +51,27 @@ public class SortingAssignment {
             }
         }
         return sorted;
+
+    public static Comparable[] bubble(Comparable[] set) {
+        //Continue looping through the array until all items are sorted
+        while (true) {
+            boolean sorted = true;
+            //Loop through all items
+            for (int i = 0; i < set.length - 1; i++) {
+                //If the first value is greater than the second value, then swap the two items
+                if (set[i].compareTo(set[i + 1]) > 0) {
+                    //If any items are swapped, then the set is not sorted
+                    sorted = false;
+                    Comparable temp = set[i];
+                    set[i] = set[i + 1];
+                    set[i + 1] = temp;
+                }
+            }
+            
+            //If the set is sorted, then return it
+            if(sorted) {
+                return set;
+            }
+        }
     }
 }
