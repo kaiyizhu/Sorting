@@ -51,7 +51,7 @@ public class SortingAssignment {
             }
         }
         return sorted;
-
+    }
     public static Comparable[] bubble(Comparable[] set) {
         //Continue looping through the array until all items are sorted
         while (true) {
