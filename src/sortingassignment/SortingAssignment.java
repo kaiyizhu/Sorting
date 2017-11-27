@@ -31,7 +31,7 @@ public class SortingAssignment
         {
             2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
         };
-        System.out.println(Arrays.toString(bubble(set)));
+        System.out.println(Arrays.toString(selection(set)));
     }
     
     public static Comparable[] insertion(Comparable[] data){
@@ -109,10 +109,7 @@ public class SortingAssignment
             set[index] = set[i];
             set[i] = ascendNum;
         }
-        for (int i = 0; i < set.length; i++)
-        {
-            System.out.print(set[i] + ", ");
-        }
+
         return set;
     }
 }
