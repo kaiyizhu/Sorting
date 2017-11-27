@@ -31,19 +31,17 @@ public class SortingAssignment
         {
             2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
         };
-        System.out.println(Arrays.toString(selection(set)));
+        System.out.println(Arrays.toString(insertion(set)));
     }
     
     public static Comparable[] insertion(Comparable[] data){
-        Comparable[] sorted = null;
-        int high;
         //starting at the second element, and moving to the end of the array,
         //insert the element at i into its proper postition
         for (int i = 1; i < data.length; i++)
         {
             //starting at the element to the left of the inserted, moving back
             //towards the begginning of the array
-            for (int j = i - 1; j > 0; j--)
+            for (int j = i - 1; j >= 0; j--)
             {
                 Comparable temp = data[i];
                 //if the element being inserted is less than the element at this
@@ -52,15 +50,16 @@ public class SortingAssignment
                 {
                     //move it to the right
                     data[j + 1] = data[j];
-                    //otherwise, leave the elements in their place, and move on
+                    //otherwise
                 } else
                 {
+                    //leave the elements in their place, and move on
                     data[j + 1] = temp;
                     break;
                 }
             }
         }
-        return sorted;
+        return data;
     }
     
     public static Comparable[] bubble(Comparable[] set) {
