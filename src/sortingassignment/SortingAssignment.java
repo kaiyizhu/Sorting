@@ -28,6 +28,7 @@ public class SortingAssignment {
         Comparable[] set = {2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123};
         System.out.println(Arrays.toString(bubble(set)));
     }
+    
     public static Comparable[] insertion(Comparable[] data){
         Comparable[] sorted = null;
         int high;
@@ -52,6 +53,7 @@ public class SortingAssignment {
         }
         return sorted;
     }
+    
     public static Comparable[] bubble(Comparable[] set) {
         //Continue looping through the array until all items are sorted
         while (true) {
