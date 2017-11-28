@@ -42,19 +42,21 @@ public class SortingAssignment
             Comparable inserted = data[i];
             //starting at the element to the left of the inserted, moving back
             //towards the begginning of the array
-            for (int j = i - 1; j >= 0; j--)
+            for (int j = i; j > 0; j--)
             {
 
                 //if the element being inserted is less than the element at this
                 //location, swap their locations.
-                if (inserted.compareTo(data[j]) < 0)
+                if (inserted.compareTo(data[j-1]) < 0)
                 {
                     //move it to the right
-                    data[j + 1] = data[j];
-                    if(j==0){
+                    data[j] = data[j-1];
+                    //if this is the first element
+                    if(j==1){
+                        //insert the temp into the first position
                         data[0] = inserted;
                     }
-                    //otherwise
+                //otherwise
                 } else
                 {
                     //leave the elements in their place, and move on
