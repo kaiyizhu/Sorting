@@ -44,13 +44,16 @@ public class SortingAssignment
             //towards the begginning of the array
             for (int j = i - 1; j >= 0; j--)
             {
-                
+
                 //if the element being inserted is less than the element at this
                 //location, swap their locations.
                 if (inserted.compareTo(data[j]) < 0)
                 {
                     //move it to the right
                     data[j + 1] = data[j];
+                    if(j==0){
+                        data[0] = inserted;
+                    }
                     //otherwise
                 } else
                 {
