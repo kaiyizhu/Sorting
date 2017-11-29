@@ -10,6 +10,7 @@ package sortingassignment;
  * @author 072935638
  */
 public class StockInfo implements Comparable {
+    char d = ',';
 
     double price, date, dividend, earnings, CPI, interestRate, PERatio;
 
@@ -47,4 +48,7 @@ public class StockInfo implements Comparable {
         }
     }
 
+    public String toString() {
+        return "" + price + d + date + d + dividend + d + earnings + d + CPI + d  + interestRate + d + PERatio;
+    }
 }
