@@ -12,6 +12,7 @@ package sortingassignment;
 public class StockInfo implements Comparable {
     char d = ',';
 
+    double[] set = new double[7];
     double price, date, dividend, earnings, CPI, interestRate, PERatio;
 
     public StockInfo(double price, double date, double dividend, double earnings, double CPI, double interestRate, double PERatio) {
@@ -47,8 +48,20 @@ public class StockInfo implements Comparable {
             return 1;
         }
     }
-
-    public String toString() {
-        return "" + price + d + date + d + dividend + d + earnings + d + CPI + d  + interestRate + d + PERatio;
+    public String toStringForFile() {//Returns
+        String s = "";
+        
+        for(int i = 0; i < set.length; i ++) {
+            //If the string has NA as the value (in this case NA is represented by -1) then print "NA,"
+            if(set[i] == -1) {
+                s += "NA" + d;
+            } else if (set[i] == -2) {//If the string has and empty (in this case empty values are represented by -2) then print ","
+                s += d;
+            } else {//If there are values, then print to the file the normal way
+                s += set[i] + d;
+            }
+        }
+        
+        return "" + price + d + date + d + dividend + d + earnings + d + CPI + d  + interestRate + d + PERatio + d;
     }
 }

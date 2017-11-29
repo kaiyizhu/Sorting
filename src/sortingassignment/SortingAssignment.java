@@ -11,8 +11,7 @@ import java.util.Arrays;
  *
  * @author 070035266
  */
-public class SortingAssignment
-{
+public class SortingAssignment {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -24,41 +23,36 @@ public class SortingAssignment
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // TODO code application logic here
-        Comparable[] set =
-        {
-            2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
-        };
+        Comparable[] set
+                = {
+                    2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
+                };
         System.out.println(Arrays.toString(insertion(set)));
     }
-    
-    public static Comparable[] insertion(Comparable[] data){
+
+    public static Comparable[] insertion(Comparable[] data) {
         //starting at the second element, and moving to the end of the array,
         //insert the element at i into its proper postition
-        for (int i = 1; i < data.length; i++)
-        {
+        for (int i = 1; i < data.length; i++) {
             Comparable inserted = data[i];
             //starting at the element to the left of the inserted, moving back
             //towards the begginning of the array
-            for (int j = i; j > 0; j--)
-            {
+            for (int j = i; j > 0; j--) {
 
                 //if the element being inserted is less than the element at this
                 //location, swap their locations.
-                if (inserted.compareTo(data[j-1]) < 0)
-                {
+                if (inserted.compareTo(data[j - 1]) < 0) {
                     //move it to the right
-                    data[j] = data[j-1];
+                    data[j] = data[j - 1];
                     //if this is the first element
-                    if(j==1){
+                    if (j == 1) {
                         //insert the temp into the first position
                         data[0] = inserted;
                     }
-                //otherwise
-                } else
-                {
+                    //otherwise
+                } else {
                     //leave the elements in their place, and move on
                     data[j] = inserted;
                     break;
@@ -67,18 +61,15 @@ public class SortingAssignment
         }
         return data;
     }
-    
+
     public static Comparable[] bubble(Comparable[] set) {
         //Continue looping through the array until all items are sorted
-        while (true)
-        {
+        while (true) {
             boolean sorted = true;
             //Loop through all items
-            for (int i = 0; i < set.length - 1; i++)
-            {
+            for (int i = 0; i < set.length - 1; i++) {
                 //If the first value is greater than the second value, then swap the two items
-                if (set[i].compareTo(set[i + 1]) > 0)
-                {
+                if (set[i].compareTo(set[i + 1]) > 0) {
                     //If any items are swapped, then the set is not sorted
                     sorted = false;
                     Comparable temp = set[i];
@@ -88,24 +79,18 @@ public class SortingAssignment
             }
 
             //If the set is sorted, then return it
-            if (sorted)
-            {
+            if (sorted) {
                 return set;
             }
         }
-    }   
-         
+    }
 
-    public static Comparable[] selection(Comparable[] set)
-    {
-        for (int i = 0; i < set.length; i++)
-        {
+    public static Comparable[] selection(Comparable[] set) {
+        for (int i = 0; i < set.length; i++) {
             //goes from 0 to end of array
             int index = i;
-            for (int j = i + 1; j < set.length; j++)
-            {
-                if (set[j].compareTo(set[index]) < 0)
-                {
+            for (int j = i + 1; j < set.length; j++) {
+                if (set[j].compareTo(set[index]) < 0) {
                     //search for lowest index
                     index = j;
                 }
