@@ -5,7 +5,13 @@
  */
 package sortingassignment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -26,41 +32,94 @@ public class SortingAssignment
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+        Scanner f;
+        try{
+            //try to assign the scanner to the dictionary file
+            File dict = new File("src/sortingassignment/stockdataunsorted.txt");
+            f = new Scanner(dict);
+        //catch any errors thrown by the lack of a file
+        }catch(FileNotFoundException e){
+            //quit the method
+            return;
+        }
+        //initialize a count of the number of lines in the file
+        int numLines =0;
+        //while the file has another line
+        while(f.hasNextLine()){
+            //move the scanner to the next line
+            f.nextLine();
+            //increment num lines
+            numLines++;
+        }
+        //repeat the process
+        try{
+            //re initialize the file
+            File dict = new File("src/sortingassignment/stockdataunsorted.txt");
+            //assign the scanner to the start of the file
+            f = new Scanner(dict);
+        //if any errors were thrown from not having a file
+        }catch(FileNotFoundException e){
+            //break the method
+            return;
+        }
+        //create a stock info array with an element for every line in the file
+        StockInfo[] data = new StockInfo[numLines];
+        //for every line in the file
+        for(int i=0 ; i<numLines;i++){
+            //assign this line to this data element
+            String[] elements = f.nextLine().split(",");
+            double[] doubles  = new double[elements.length];
+            for(int j=0; j<elements.length; j++){
+                if(elements[j].equals("")){
+                    doubles[j] = -2;
+                }else if(elements[j].equals("NA")){
+                    doubles[j] = -1;
+                }else{
+                    doubles[j] = Double.parseDouble(elements[j]);
+                }
+            }
+            data[i]=new StockInfo(doubles);
+        }
+        
         Comparable[] set =
         {
             2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
         };
-        System.out.println(Arrays.toString(selection(set)));
+        System.out.println(Arrays.toString(insertion(set)));
     }
     
     public static Comparable[] insertion(Comparable[] data){
-        Comparable[] sorted = null;
-        int high;
         //starting at the second element, and moving to the end of the array,
         //insert the element at i into its proper postition
         for (int i = 1; i < data.length; i++)
         {
+            Comparable inserted = data[i];
             //starting at the element to the left of the inserted, moving back
             //towards the begginning of the array
-            for (int j = i - 1; j > 0; j--)
+            for (int j = i; j > 0; j--)
             {
-                Comparable temp = data[i];
+
                 //if the element being inserted is less than the element at this
                 //location, swap their locations.
-                if (temp.compareTo(data[j]) < 0)
+                if (inserted.compareTo(data[j-1]) < 0)
                 {
                     //move it to the right
-                    data[j + 1] = data[j];
-                    //otherwise, leave the elements in their place, and move on
+                    data[j] = data[j-1];
+                    //if this is the first element
+                    if(j==1){
+                        //insert the temp into the first position
+                        data[0] = inserted;
+                    }
+                //otherwise
                 } else
                 {
-                    data[j + 1] = temp;
+                    //leave the elements in their place, and move on
+                    data[j] = inserted;
                     break;
                 }
             }
         }
-        return sorted;
+        return data;
     }
     
     public static Comparable[] bubble(Comparable[] set) {
