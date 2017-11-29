@@ -7,6 +7,9 @@ package sortingassignment;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -67,7 +70,13 @@ public class SortingAssignment
             String[] elements = f.nextLine().split(",");
             double[] doubles  = new double[elements.length];
             for(int j=0; j<elements.length; j++){
-                doubles[j] = Double.parseDouble(elements[j]);
+                if(elements[j].equals("")){
+                    doubles[j] = -2;
+                }else if(elements[j].equals("NA")){
+                    doubles[j] = -1;
+                }else{
+                    doubles[j] = Double.parseDouble(elements[j]);
+                }
             }
             data[i]=new StockInfo(doubles);
         }
