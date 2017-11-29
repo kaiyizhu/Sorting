@@ -10,9 +10,9 @@ package sortingassignment;
  * @author 072935638
  */
 public class StockInfo implements Comparable {
-    char d = ',';
+    static private char d = ',';
 
-    double[] set = new double[7];
+    private double[] set = new double[7];
     double price, date, dividend, earnings, CPI, interestRate, PERatio;
 
     public StockInfo(double price, double date, double dividend, double earnings, double CPI, double interestRate, double PERatio) {
@@ -62,6 +62,6 @@ public class StockInfo implements Comparable {
             }
         }
         
-        return "" + price + d + date + d + dividend + d + earnings + d + CPI + d  + interestRate + d + PERatio + d;
+        return s;
     }
 }
