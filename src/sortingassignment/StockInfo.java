@@ -10,6 +10,7 @@ package sortingassignment;
  * @author 072935638
  */
 public class StockInfo implements Comparable {
+    char d = ',';
 
     double price, date, dividend, earnings, CPI, interestRate, PERatio;
 
@@ -34,13 +35,20 @@ public class StockInfo implements Comparable {
     }
 
     public int compareTo(Object o) {
+        //Force Object into StockInfo object
         StockInfo stock = (StockInfo) o;
-        
-        if(stock.date < date) {
-            
+
+        //If the dates are equal, then return 0
+        if (this.date == stock.date) {
+            return 0;
+        } else if (this.date < stock.date) {//If this date is less than the compared date, then return -1
+            return -1;
+        } else {//If this date is greater than the compared date, then return 1
+            return 1;
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public String toString() {
+        return "" + price + d + date + d + dividend + d + earnings + d + CPI + d  + interestRate + d + PERatio;
+    }
 }
