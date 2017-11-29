@@ -5,7 +5,10 @@
  */
 package sortingassignment;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *
@@ -26,7 +29,49 @@ public class SortingAssignment
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+        Scanner f;
+        try{
+            //try to assign the scanner to the dictionary file
+            File dict = new File("src/sortingassignment/stockdataunsorted.txt");
+            f = new Scanner(dict);
+        //catch any errors thrown by the lack of a file
+        }catch(FileNotFoundException e){
+            //quit the method
+            return;
+        }
+        //initialize a count of the number of lines in the file
+        int numLines =0;
+        //while the file has another line
+        while(f.hasNextLine()){
+            //move the scanner to the next line
+            f.nextLine();
+            //increment num lines
+            numLines++;
+        }
+        //repeat the process
+        try{
+            //re initialize the file
+            File dict = new File("src/sortingassignment/stockdataunsorted.txt");
+            //assign the scanner to the start of the file
+            f = new Scanner(dict);
+        //if any errors were thrown from not having a file
+        }catch(FileNotFoundException e){
+            //break the method
+            return;
+        }
+        //create a stock info array with an element for every line in the file
+        StockInfo[] data = new StockInfo[numLines];
+        //for every line in the file
+        for(int i=0 ; i<numLines;i++){
+            //assign this line to this data element
+            String[] elements = f.nextLine().split(",");
+            double[] doubles  = new double[elements.length];
+            for(int j=0; j<elements.length; j++){
+                doubles[j] = Double.parseDouble(elements[j]);
+            }
+            data[i]=new StockInfo(doubles);
+        }
+        
         Comparable[] set =
         {
             2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
