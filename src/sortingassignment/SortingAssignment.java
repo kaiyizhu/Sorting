@@ -65,32 +65,48 @@ public class SortingAssignment {
         StockInfo[] data = new StockInfo[numLines];
         //for every line in the file
         for(int i=0 ; i<numLines;i++){
-            //assign this line to this data element
+            //create a string array of the tokens in this record
             String[] elements = f.nextLine().split(",");
+            //create a double array to match
             double[] doubles  = new double[elements.length];
+            //for every token
             for(int j=0; j<elements.length; j++){
+                //if the element is empty
                 if(elements[j].equals("")){
+                    //save it as a negative 2
                     doubles[j] = -2;
+                //if it is NA in the file
                 }else if(elements[j].equals("NA")){
+                    //save it as a -1
                     doubles[j] = -1;
+                //otherwise    
                 }else{
+                    //save it as a double
                     doubles[j] = Double.parseDouble(elements[j]);
                 }
             }
+            //initialize the tokens as a StockInfo object
             data[i]=new StockInfo(doubles);
         }
+        //sort the data
         insertion(data);
-      
+        //initialize the output file
         File out = new File("src/sortingassignment/stockdatasorted.txt");
         PrintWriter p;
+        //attempt to assign the print writer to the file
         try{
             p = new PrintWriter(new FileWriter(out), false);
+        //if an error is thrown
         }catch(IOException e){
+            //quit the method
             return;
         }
+        //for every one of the sorted elements
         for(int i=0; i<data.length;i++){
+            //print it out to the file
             p.println(data[i].toStringForFile());
         }
+        //close the file
         p.close();
         
     }
