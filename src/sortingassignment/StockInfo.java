@@ -33,6 +33,7 @@ public class StockInfo implements Comparable {
         this.CPI = set[4];
         this.interestRate = set[5];
         this.PERatio = set[6];
+        this.set = set;
     }
 
     public int compareTo(Object o) {

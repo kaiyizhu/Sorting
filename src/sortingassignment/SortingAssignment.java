@@ -79,15 +79,23 @@ public class SortingAssignment {
             }
             data[i]=new StockInfo(doubles);
         }
+        bubble(data);
+      
+        File out = new File("src/sortingassignment/stockdatasorted.txt");
+        PrintWriter p;
+        try{
+            p = new PrintWriter(new FileWriter(out), false);
+        }catch(IOException e){
+            return;
+        }
+        for(int i=0; i<data.length;i++){
+            p.println(data[i].toStringForFile());
+        }
+        p.close();
         
-        Comparable[] set =
-        {
-            2, 1, 4, 4, 8, 12, 71, 63, 15, 85, 97, 12, 53, 71, 123
-        };
-        System.out.println(Arrays.toString(insertion(set)));
     }
 
-    public static Comparable[] insertion(Comparable[] data) {
+    public static void insertion(Comparable[] data) {
         //starting at the second element, and moving to the end of the array,
         //insert the element at i into its proper postition
         for (int i = 1; i < data.length; i++) {
@@ -114,10 +122,10 @@ public class SortingAssignment {
                 }
             }
         }
-        return data;
+        return;
     }
-
-    public static Comparable[] bubble(Comparable[] set) {
+    
+    public static void bubble(Comparable[] set) {
         //Continue looping through the array until all items are sorted
         while (true) {
             boolean sorted = true;
@@ -135,12 +143,12 @@ public class SortingAssignment {
 
             //If the set is sorted, then return it
             if (sorted) {
-                return set;
+                return;
             }
         }
     }
 
-    public static Comparable[] selection(Comparable[] set) {
+    public static void selection(Comparable[] set) {
         for (int i = 0; i < set.length; i++) {
             //goes from 0 to end of array
             int index = i;
@@ -155,6 +163,6 @@ public class SortingAssignment {
             set[i] = ascendNum;
         }
 
-        return set;
+        return;
     }
 }
