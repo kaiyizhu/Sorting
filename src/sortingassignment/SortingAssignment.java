@@ -79,7 +79,7 @@ public class SortingAssignment {
             }
             data[i]=new StockInfo(doubles);
         }
-        bubble(data);
+        insertion(data);
       
         File out = new File("src/sortingassignment/stockdatasorted.txt");
         PrintWriter p;
