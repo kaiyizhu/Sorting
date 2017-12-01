@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -138,7 +137,6 @@ public class SortingAssignment {
                 }
             }
         }
-        return;
     }
     
     public static void bubble(Comparable[] set) {
@@ -178,7 +176,5 @@ public class SortingAssignment {
             set[index] = set[i];
             set[i] = ascendNum;
         }
-
-        return;
     }
 }

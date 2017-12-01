@@ -15,15 +15,6 @@ public class StockInfo implements Comparable {
     private double[] set = new double[7];
     double price, date, dividend, earnings, CPI, interestRate, PERatio;
 
-    public StockInfo(double price, double date, double dividend, double earnings, double CPI, double interestRate, double PERatio) {
-        this.price = price;
-        this.date = date;
-        this.dividend = dividend;
-        this.earnings = earnings;
-        this.CPI = CPI;
-        this.interestRate = interestRate;
-        this.PERatio = PERatio;
-    }
 
     public StockInfo(double[] set) {
         this.price = set[0];
